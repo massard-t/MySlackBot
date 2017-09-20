@@ -21,5 +21,10 @@
   "homepage": "https://github.com/massard-t/TheChillOne#readme",
   "dependencies": {
     "slackbots": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.7.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
   }
 }
