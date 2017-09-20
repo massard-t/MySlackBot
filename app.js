@@ -1,4 +1,19 @@
 const process = require('process');
-const slack = require('slackbots');
+const Bot = require('slackbots');
 
-const API = process.env.API_KEY
+
+const token = process.env.API_KEY;
+const name = 'the_chill_one';
+
+const settings = {
+  token,
+  name,
+};
+
+
+const bot = new Bot(settings);
+
+bot.on('start', () => {
+  console.log(`${name} is up and running`);
+  bot.postMessageToUser('theo', 'Hi Daddy!');
+});
