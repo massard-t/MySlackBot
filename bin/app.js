@@ -23,6 +23,7 @@ const main = () => {
   });
 
   bot.on('message', (data) => {
+    winston.info('Got some fresh new data');
     switch (data.type) {
       case MENTIONNED:
         // In this case, the bot is actually mentionned.
@@ -32,9 +33,6 @@ const main = () => {
         break;
       default: break;
     }
-
-    winston.info('Got some fresh new data c:');
-    // console.log(data);
   });
 };
 
