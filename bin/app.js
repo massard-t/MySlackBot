@@ -1,3 +1,4 @@
+const winston = require('winston');
 const process = require('process');
 const Bot = require('slackbots');
 
@@ -14,6 +15,11 @@ const settings = {
 const bot = new Bot(settings);
 
 bot.on('start', () => {
-  console.log(`${name} is up and running`);
-  bot.postMessageToUser('theo', 'Hi Daddy!');
+  winston.info(`${name} is up and running`);
+  // bot.postMessageToUser('theo', 'Hi Daddy!');
+});
+
+bot.on('message', (data) => {
+  winston.info('Got some fresh new data c:');
+  console.log(data);
 });
