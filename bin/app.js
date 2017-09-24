@@ -20,6 +20,15 @@ bot.on('start', () => {
 });
 
 bot.on('message', (data) => {
+  switch (data.type) {
+    case 'desktop_notification':
+      // In this case, the bot is actually mentionned.
+      break;
+    case 'message':
+      // Process message if keyword matches ?
+      break;
+    default: break;
+  }
   winston.info('Got some fresh new data c:');
-  console.log(data);
+  // console.log(data);
 });
