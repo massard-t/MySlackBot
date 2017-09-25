@@ -2,11 +2,11 @@
 const winston = require('winston');
 const process = require('process');
 const Bot = require('slackbots');
+const commands = require('../lib/commands');
 
 
 const token = process.env.API_KEY;
 const name = 'the_chill_one';
-const MENTIONNED = 'desktop_notification';
 
 const settings = {
   token,
@@ -15,25 +15,11 @@ const settings = {
 
 
 const main = () => {
+  winston.info(`Starting ${name}...`);
   const bot = new Bot(settings);
 
-  bot.on('start', () => {
-    winston.info(`${name} is up and running`);
-    // bot.postMessageToUser('theo', 'Hi Daddy!');
-  });
-
-  bot.on('message', (data) => {
-    winston.info('Got some fresh new data');
-    switch (data.type) {
-      case MENTIONNED:
-        // In this case, the bot is actually mentionned.
-        break;
-      case 'message':
-        // Process message if keyword matches ?
-        break;
-      default: break;
-    }
-  });
+  bot.on('start', commands.onStart);
+  bot.on('message', commands.onMessage);
 };
 
 
